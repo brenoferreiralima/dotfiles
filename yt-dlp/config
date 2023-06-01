@@ -1,0 +1,6 @@
+-o %(title)s.%(ext)s
+--restrict-filenames
+--windows-filenames
+--merge-output-format mp4
+--remux-video mp4
+--embed-thumbnail
