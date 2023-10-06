@@ -41,7 +41,7 @@ gsettings reset org.gnome.shell app-picker-layout
 env QT_QPA_PLATFORM=xcb QT_QPA_PLATFORMTHEME=gtk3 app
 
 
-### STEAM | PROTON ###
+### Steam | Proton ###
 
 ## mangohud + gamemode + proton-ge
 mangohud gamemoderun WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=5 %command%
@@ -57,3 +57,12 @@ btrfs balance start --full-balance /mnt
 
 ## data + metadata balance for new disk(s) + convert to raid1
 btrfs balance start -dconvert=raid1 -mconvert=raid1 /mnt
+
+
+### ffmpeg ###
+
+## convert video
+ffmpeg -i input_file -c copy output_file
+
+## trimm video
+ffmpeg -i input_file -ss start_time -to end_time -c copy output_file
