@@ -16,7 +16,7 @@ sed -i 's/termo1/termo2/g' file.txt
 sudo pacman -Rsn $(pacman -Qdtq)
 
 ## generate mirrorlist using reflector
-sudo reflector --verbose --country Brazil --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --latest 10 --country Brazil --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 
 ### yt-dlp ###
