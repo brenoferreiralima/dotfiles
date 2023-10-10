@@ -66,3 +66,8 @@ ffmpeg -i input_file -c copy output_file
 
 ## trimm video
 ffmpeg -i input_file -ss start_time -to end_time -c copy output_file
+
+
+### OBS ###
+## add gamecapture mode to obs + gamemode
+obs-gamecapture gamemoderun /home/breno/.albiononline/game_x64/./Albion-Online &
