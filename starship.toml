@@ -2,10 +2,12 @@ add_newline = false
 
 [username]
 show_always = true
-format = '[$user]($style) at '
+format = '󰌽 [$user]($style) at '
 
 [hostname]
 ssh_only = false
+format = '󰌢 [$ssh_symbol$hostname]($style) in '
 
 [directory]
 truncation_length = 1
+format = '󰝰 [$path]($style)[$read_only]($read_only_style) '
