@@ -7,6 +7,7 @@ format = '☠️  [$user]($style) at '
 [hostname]
 ssh_only = false
 format = '🖥️  [$ssh_symbol$hostname]($style) in '
+# format = '💻  [$ssh_symbol$hostname]($style) in '
 
 [directory]
 truncation_length = 1
