@@ -108,9 +108,10 @@ source $ZSH/oh-my-zsh.sh
 #
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias mup="sudo reflector --verbose --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 alias sup="sudo pacman -Syu && flatpak update"
+alias scl="sudo pacman -Qdttq | sudo pacman -Rns -"
 alias sre="systemctl reboot"
 alias spo="systemctl poweroff"
-alias mup="sudo reflector --verbose --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 
 eval "$(starship init zsh)"
