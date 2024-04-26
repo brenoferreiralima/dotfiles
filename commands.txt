@@ -1,4 +1,6 @@
+###############
 ### General ###
+###############
 
 ## burn iso image
 sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress && sudo sync
@@ -10,7 +12,9 @@ sudo find . -iname 'Thumbs.db' -exec rm -rfv {} +
 sed -i 's/termo1/termo2/g' file.txt
 
 
+###########################
 ### Arch Linux | Pacman ###
+###########################
 
 ## uninstall no longer needed dependencies
 sudo pacman -Rsn $(pacman -Qdtq)
@@ -19,7 +23,9 @@ sudo pacman -Rsn $(pacman -Qdtq)
 sudo reflector --verbose --latest 10 --country Brazil --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 
+##############
 ### yt-dlp ###
+##############
 
 ## download video formating filename to "title.ext" 
 yt-dlp -o "%(title)s.%(ext)s" link 
@@ -31,7 +37,9 @@ yt-dlp -o "%(title)s.%(ext)s" -x --audio-format mp3 link
 yt-dlp --sub-lang ptBR --write-sub --embed-subs link
 
 
+#############
 ### Gnome ###
+#############
 
 ## reset gnome shell app grid
 gsettings reset org.gnome.desktop.app-folders folder-children
@@ -41,13 +49,19 @@ gsettings reset org.gnome.shell app-picker-layout
 env QT_QPA_PLATFORM=xcb QT_QPA_PLATFORMTHEME=gtk3 app
 
 
+######################
 ### Steam | Proton ###
+######################
 
 ## mangohud + gamemode + proton-ge
 mangohud gamemoderun WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=5 %command%
+## mangohud + gamemode + proton-ge + directx 3d
+mangohud gamemoderun PROTON_USE_WINED3D=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=5 %command% 
 
 
+#############
 ### BtrFS ###
+#############
 
 ## add disk(s)
 btrfs device add /dev/sdx /mnt
@@ -59,7 +73,9 @@ btrfs balance start --full-balance /mnt
 btrfs balance start -dconvert=raid1 -mconvert=raid1 /mnt
 
 
+##############
 ### ffmpeg ###
+##############
 
 ## convert video
 ffmpeg -i input_file -c copy output_file
@@ -68,9 +84,18 @@ ffmpeg -i input_file -c copy output_file
 ffmpeg -i input_file -ss start_time -to end_time -c copy output_file
 
 
+###########
 ### OBS ###
+###########
+
 ## add gamecapture mode to obs + gamemode
 obs-gamecapture gamemoderun /home/breno/.albiononline/game_x64/./Albion-Online &
 
+
+##############
 ### Chrome ###
+##############
+
+## Chrome + Wayland
 google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+
