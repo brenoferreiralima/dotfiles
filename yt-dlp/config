@@ -4,3 +4,5 @@
 --merge-output-format mp4
 --remux-video mp4
 --embed-thumbnail
+--concurrent-fragments 8
+--no-part
