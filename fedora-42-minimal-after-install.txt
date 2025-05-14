@@ -1,0 +1,63 @@
+Fedora 42 Minimal After Install
+
+
+1. Edit Grub to boot faster:
+    sudo nano /etc/default/grub
+        replace GRUB_TIMEOUT=5 with GRUB_TIMEOUT=1
+    sudo grub2-mkconfig -o /etc/grub2-efi.cfg
+    
+2. Edit dnf to be faster and minimal:
+    sudo nano /etc/dnf/dnf.conf
+        add this options to main
+            defaultyes=True
+            install_weak_deps=False
+            fastestmirror=True
+            max_parallel_downloads=20
+
+3. Add 3rd party repos (https://docs.fedoraproject.org/en-US/workstation-working-group/third-party-repos/)
+    sudo dnf install fedora-workstation-repositories
+    
+4. Add rpmfusion repo (https://rpmfusion.org/Configuration#Command_Line_Setup_using_rpm):
+    sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
+    sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+5. Install important packages
+    sudo dnf install bash-color-prompt tuned tuned-ppd NetworkManager-bluetooth NetworkManager-wifi pipewire-pulseaudio
+    
+    [Google Noto Fonts]
+    sudo dnf install google-noto-fonts-all google-noto-emoji-fonts google-noto-color-emoji-fonts
+
+    [Gstreamer Codecs]
+    sudo dnf install gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly gstreamer1-plugins-ugly-free gstreamer1-plugin-\*
+    
+6. Install GUI
+    [GNOME]
+    sudo dnf install gdm gnome-console gnome-text-editor gnome-calculator gnome-tweaks nautilus file-roller totem loupe evince desktop-backgrounds-gnome
+    sudo dnf install gnome-backgrounds gnome-disk-utility gnome-system-monitor gnome-weather gnome-clocks 
+    
+    sudo systemctl set-default graphical.target
+    
+6. Install optional packages
+    [Google Chrome]
+    sudo dnf config-manager setopt google-chrome.enabled=1
+    sudo dnf install google-chrome-stable
+    
+    [VSCode]
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+    dnf check-update
+    sudo dnf install code
+    
+    [Flatpak]
+    sudo dnf install flatpak
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    
+    [Others]
+    sudo dnf install ptyxis celluloid discord vim btop ffmpeg yt-dlp aria2 inxi egl-utils mesa-demos fish git tar zip unzip p7zip unrar bat lsd libreoffice-writer libreoffice-calc libreoffice-impress
+    flatpak install flathub page.tesk.Refine io.bassi.Amberol com.mattjakeman.ExtensionManager com.spotify.Client io.github.shiftey.Desktop
+
+7. Individual Extras:
+    Thinkpad t440s:
+        install intel wifi drivers
+            sudo dnf install iwlwifi-dvm-firmware iwlwifi-mvm-firmware
+    
