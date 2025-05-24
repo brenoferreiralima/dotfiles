@@ -32,7 +32,7 @@ Fedora 42 Minimal After Install
     
 6. Install GUI
     [GNOME]
-    sudo dnf install gdm gnome-console gnome-text-editor gnome-calculator gnome-tweaks nautilus file-roller totem loupe evince desktop-backgrounds-gnome
+    sudo dnf install gdm gnome-console gnome-text-editor gnome-calculator gnome-tweaks nautilus file-roller totem loupe evince epiphany desktop-backgrounds-gnome
     sudo dnf install gnome-backgrounds gnome-disk-utility gnome-system-monitor gnome-weather gnome-clocks 
     
     sudo systemctl set-default graphical.target
