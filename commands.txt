@@ -99,3 +99,5 @@ obs-gamecapture gamemoderun /home/breno/.albiononline/game_x64/./Albion-Online &
 ## Chrome + Wayland
 google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
 
+## web app
+google-chrome-stable --profile-directory=Default --app=https://url
