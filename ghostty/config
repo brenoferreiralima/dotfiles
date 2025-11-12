@@ -4,6 +4,8 @@
 # gtk-titlebar = false
 window-padding-x = 12
 window-padding-y = 4
+window-height = 40
+window-width = 120
 
 # theme = Adwaita Dark
 ## bg gnome 47
@@ -17,4 +19,3 @@ font-family = FiraCode Nerd Font
 
 shell-integration-features = no-cursor
 cursor-style = underline
-
