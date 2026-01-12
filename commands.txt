@@ -101,3 +101,22 @@ google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
 
 ## web app
 google-chrome-stable --profile-directory=Default --app=https://url
+
+
+##############
+### System ###
+##############
+
+## Audio
+Audio Analog
+pactl set-default-sink alsa_output.pci-0000_30_00.6.analog-stereo
+Audio HDMI
+pactl set-default-sink alsa_output.pci-0000_30_00.1.hdmi-stereo
+
+## Brightness
+Set Brightness
+ddcutil setvcp 10 0
+ddcutil setvcp 10 25
+ddcutil setvcp 10 50
+ddcutil setvcp 10 75
+ddcutil setvcp 10 100
