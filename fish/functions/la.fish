@@ -1,4 +1,3 @@
-# list all things with eza
-function la --wraps=ls --wraps='eza --icons --long --all' --description 'alias la=eza --icons --long --all'
-    eza --icons --long --all $argv     
+function la --wraps='eza --icons --long --time-style long-iso --all' --description 'alias la eza --icons --long --time-style long-iso --all'
+    eza --icons --long --time-style long-iso --all $argv
 end
