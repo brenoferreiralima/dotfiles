@@ -1,10 +1,14 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    # show fastfetch and print a empty line after
+    fastfetch --pipe --config ff
+    echo ''
+
+    # enable starship.rs
+    # starship init fish | source
+
+    # enable oh-my-posh
+    # oh-my-posh init fish --config '' | source
+
+    # enable fzf shell integration
+    fzf --fish | source
 end
-
-
-# Disable greeting message
-set fish_greeting
-
-# Enable starship.rs
-starship init fish | source
