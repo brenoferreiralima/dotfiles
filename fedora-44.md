@@ -152,11 +152,13 @@ sudo dnf install aria2 btop code expect fastfetch firacode-nerd-fonts firamono-n
 ```
 
 ### Tweaks
-### Reset Shell Apps Order
+### Reset Gnome Shell Apps Order
+```sh
+dconf write /org/gnome/desktop/app-folders/folder-children "@aa{sv} []"
+```
 ```sh
 dconf write /org/gnome/shell/app-picker-layout "@aa{sv} []"
 ```
-
 ### Set Volume Steps to 5
 ```sh
 dconf write /org/gnome/settings-daemon/plugins/media-keys/volume-step "5"
