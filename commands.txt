@@ -30,8 +30,8 @@ sudo reflector --verbose --latest 10 --country Brazil --protocol https --sort ra
 ## download video formating filename to "title.ext" 
 yt-dlp -o "%(title)s.%(ext)s" link 
 
-## yt-dlp convert to mp3
-yt-dlp -o "%(title)s.%(ext)s" -x --audio-format mp3 link
+## yt-dlp convert to "X" (aac, mp3, mp4, mkv)
+yt-dlp -t X link
 
 ## yt-dlp embed subs
 yt-dlp --sub-lang ptBR --write-sub --embed-subs link
@@ -45,8 +45,12 @@ yt-dlp --sub-lang ptBR --write-sub --embed-subs link
 gsettings reset org.gnome.desktop.app-folders folder-children
 gsettings reset org.gnome.shell app-picker-layout
 
-## qt gnome integration wayland
-env QT_QPA_PLATFORM=xcb QT_QPA_PLATFORMTHEME=gtk3 app
+## reset gnome shell app grid (dconf)
+dconf write /org/gnome/desktop/app-folders/folder-children "@aa{sv} []"
+dconf write /org/gnome/shell/app-picker-layout "@aa{sv} []"
+
+## set volume steps to "5"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/volume-step "5"
 
 
 ######################
@@ -55,9 +59,11 @@ env QT_QPA_PLATFORM=xcb QT_QPA_PLATFORMTHEME=gtk3 app
 
 ## mangohud + gamemode + proton-ge
 mangohud gamemoderun WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=5 %command%
+
 ## mangohud + gamemode + proton-ge + directx 3d
 mangohud gamemoderun PROTON_USE_WINED3D=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=5 %command%
-##
+
+## protong-ge custom command for max performance
 PROTON_ENABLE_WAYLAND=1 PROTON_PRIORITY_HIGH=1 STAGING_SHARED_MEMORY=1 WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=5 MANGOHUD=1 %command%
 
 
@@ -110,13 +116,14 @@ google-chrome-stable --profile-directory=Default --app=https://url
 ##############
 
 ## Audio
-Audio Analog
+# set audio output to analog
 pactl set-default-sink alsa_output.pci-0000_30_00.6.analog-stereo
-Audio HDMI
+
+# set audio output to HDMI
 pactl set-default-sink alsa_output.pci-0000_30_00.1.hdmi-stereo
 
 ## Brightness
-Set Brightness
+# set display brightness (external display)
 ddcutil setvcp 10 0
 ddcutil setvcp 10 25
 ddcutil setvcp 10 50
@@ -139,3 +146,4 @@ fwupdmgr get-updates
 
 ## install updates
 fwupdmgr update
+
