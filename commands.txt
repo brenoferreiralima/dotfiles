@@ -45,11 +45,18 @@ yt-dlp --sub-lang ptBR --write-sub --embed-subs link
 gsettings reset org.gnome.desktop.app-folders folder-children
 gsettings reset org.gnome.shell app-picker-layout
 
-## reset gnome shell app grid (dconf)
+## set gnome shell app grid
+gsettings set org.gnome.desktop.app-folders folder-children []
+gsettings set org.gnome.shell app-picker-layout []
+
+## set volume step
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 5
+
+## set gnome shell app grid (dconf)
 dconf write /org/gnome/desktop/app-folders/folder-children "@aa{sv} []"
 dconf write /org/gnome/shell/app-picker-layout "@aa{sv} []"
 
-## set volume steps to "5"
+## set volume step (dconf)
 dconf write /org/gnome/settings-daemon/plugins/media-keys/volume-step "5"
 
 
