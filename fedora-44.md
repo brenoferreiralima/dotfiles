@@ -148,7 +148,7 @@ sudo dnf install dconf-editor file-roller glycin-thumbnailer papers-nautilus
 
 ### Extras
 ```sh
-sudo dnf install aria2 btop code expect fastfetch firacode-nerd-fonts firamono-nerd-fonts fish fontawesome-fonts-all fzf gh google-chrome-stable plocate tar tldr vim wget yt-dlp
+sudo dnf install aria2 btop code expect eza fastfetch firacode-nerd-fonts firamono-nerd-fonts fish fontawesome-fonts-all fzf gh git google-chrome-stable plocate tar tldr vim wget yt-dlp
 ```
 
 ### Tweaks
