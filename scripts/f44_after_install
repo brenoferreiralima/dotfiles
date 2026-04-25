@@ -1,0 +1,96 @@
+#!/bin/bash
+# minimal gnome core apps installation for fedora 44
+# with extra repositories and packages for multimedia, fonts, and other utilities
+
+# ANSI color variables (BOLD)
+NColor='\033[0m'      # No Color
+BRed='\033[1;31m'     # Red
+BGreen='\033[1;32m'   # Green
+BYellow='\033[1;33m'  # Yellow
+
+# warnings
+echo -e "\nThis script is intended to be run after a fresh installation of Fedora 44 custom..."
+echo -e "This action will do a lot of changes to your system, so make sure you understand what it does before proceeding..."
+
+declare -l PROCEED
+echo -e "\n${BYellow}Proceed?${NColor}"
+read -p "yes/no: " PROCEED
+case $PROCEED in
+    yes|y) echo -e "\n${BGreen}Proceeding with the script...${NColor}" ;;
+    no|n)
+        echo -e "\n${BRed}Aborting the script...${NColor}\n"
+        exit 1
+    ;;
+    *)
+        echo -e "\n${BRed}Invalid choice. Please enter 'yes(y)' or 'no(n)'.\n${NColor}"
+        exit 1
+    ;;
+esac
+
+# choose graphic driver
+echo -e "\n${BYellow}Choose your graphic driver.${NColor}"
+read -p "All(0) | Nvidia(1) | AMD(2) | Intel(3): " GD
+
+case $GD in
+    0) VADRIVER="libva-nvidia-driver mesa-va-drivers-freeworld intel-media-driver" ;;
+    1) VADRIVER="libva-nvidia-driver" ;;
+    2) VADRIVER="mesa-va-drivers-freeworld" ;;
+    3) VADRIVER="intel-media-driver" ;;
+    *)
+        echo -e "\n${BRed}Invalid choice. Please select a valid graphic driver.\n${NColor}"
+        exit 1
+    ;;
+esac
+
+# enable ntsync
+echo -e "\nEnabling NTSync module..."
+echo "ntsync" | sudo tee /etc/modules-load.d/ntsync.conf > /dev/null
+
+
+# set dnf.conf
+echo -e "\nConfiguring DNF..."
+echo -e "[main]\ndefaultyes=True\nfastestmirror=True\ninstall_weak_deps=False\nmax_parallel_downloads=20\n" | sudo tee /etc/dnf/dnf.conf > /dev/null
+
+# enable fedora 3rd party repositories 
+echo -e "\nEnabling fedora 3rd party repositories..."
+sudo dnf install fedora-workstation-repositories && sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1 && sudo dnf config-manager setopt google-chrome.enabled=1
+
+# install rpmfusion repositories
+echo -e "\nInstalling RPMFusion repositories..."
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# install rpmfusion tainted repositories
+echo -e "\nInstalling RPMFusion tainted repositories..."
+sudo dnf install rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
+
+# install terra repository
+echo -e "\nInstalling Terra repository..."
+sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+
+# install visual studio code repository
+echo -e "\nInstalling Visual Studio Code repository..."
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+
+# clean system and upgrade
+echo -e "\nCleaning system and upgrading..."
+sudo dnf autoremove && sudo dnf clean all && sudo dnf upgrade
+
+# install packages
+echo -e "\nInstalling packages..."
+sudo dnf install bash-color-prompt tuned tuned-ppd NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan pipewire pipewire-pulseaudio ffmpeg gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\* libdvdcss usbutils google-noto-fonts-all liberation-fonts-all gdm gnome-control-center gnome-backgrounds ptyxis decibels gnome-calculator gnome-calendar snapshot gnome-characters gnome-clocks gnome-connections gnome-contacts baobab gnome-disk-utility simple-scan papers nautilus gnome-font-viewer loupe gnome-logs gnome-maps gnome-music gnome-system-monitor gnome-text-editor showtime gnome-weather epiphany file-roller glycin-thumbnailer papers-nautilus gnome-tweaks $VADRIVER
+
+# install extra firmwares
+echo -e "\nInstalling extra firmwares..."
+sudo dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
+
+# set gnome settings
+echo -e "\nSetting GNOME..."
+gsettings set org.gnome.desktop.app-folders folder-children []
+gsettings set org.gnome.shell app-picker-layout []
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 5
+
+# enable graphical target
+echo -e "\nSetting graphical target as default..."
+sudo systemctl set-default graphical.target
+
+echo -e "\n${BGreen}Installation complete!${NColor}"
