@@ -41,7 +41,7 @@ sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-releas
 sudo dnf install rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
 ```
 
-### Terra Release
+### Terra
 ```sh
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 ```
@@ -56,14 +56,14 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 ## 4. Update System
 ### Update
 ```sh
-sudo dnf autoremove && sudo dnf clean all && sudo dnf distro-sync
+sudo dnf autoremove && sudo dnf clean all && sudo dnf upgrade
 ```
 
 
 ## 5. Install Packages
-### System Extras  
+### System Extras
 ```sh
-sudo dnf install bash-color-prompt usbutils pulseaudio-utils libglvnd-gles
+sudo dnf install bash-color-prompt
 ```
 
 ### Tuned
@@ -73,12 +73,12 @@ sudo dnf install tuned tuned-ppd
 
 ### NetworkManager
 ```sh
-sudo dnf install NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan
+sudo dnf install NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan
 ```
 
 ### Pipewire
 ```sh
-sudo dnf install pipewire pipewire-pulseaudio pipewire-utils
+sudo dnf install pipewire pipewire-pulseaudio
 ``` 
 
 ### ffmpeg
@@ -88,10 +88,9 @@ sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 
 ### Gstreamer
 ```sh
-sudo dnf install gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers pipewire-gstreamer gstreamer1-plugin-\*
+sudo dnf install gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\*
 ```
 
-### Codecs
 ### Intel
 ```sh
 sudo dnf install intel-media-driver
@@ -115,17 +114,23 @@ sudo dnf install libva-nvidia-driver.i686
 
 ### DVD
 ```sh
-sudo dnf install libdvdcss
+sudo dnf insytall libdvdcss
 ```
 
 ### Firmwares
+```sh
+sudo dnf install usbutils
+```
 ```sh
 sudo dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
 ```
 
 ### Fonts  
 ```sh
-sudo dnf install google-noto-\*
+sudo dnf install google-noto-fonts-all
+```
+```sh
+sudo dnf install liberation-fonts-all
 ```
 
 ### Gnome Base Apps
@@ -143,12 +148,12 @@ sudo dnf install decibels gnome-calculator gnome-calendar snapshot gnome-charact
 
 ### Gnome Extras  
 ```sh
-sudo dnf install dconf-editor file-roller glycin-thumbnailer papers-nautilus
+sudo dnf install file-roller glycin-thumbnailer papers-nautilus
 ```
 
 ### Extras
 ```sh
-sudo dnf install aria2 btop code expect eza fastfetch firacode-nerd-fonts firamono-nerd-fonts fish fontawesome-fonts-all fzf gh git google-chrome-stable plocate tar tldr vim wget yt-dlp
+sudo dnf install aria2 btop code dconf-editor expect eza fastfetch firacode-nerd-fonts firamono-nerd-fonts fish fontawesome-fonts-all fzf gh git gnome-tweaks google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate tar tldr vim wget yt-dlp
 ```
 
 ### Tweaks
