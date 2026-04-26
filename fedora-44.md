@@ -148,12 +148,12 @@ sudo dnf install decibels gnome-calculator gnome-calendar snapshot gnome-charact
 
 ### Gnome Extras  
 ```sh
-sudo dnf install file-roller glycin-thumbnailer papers-nautilus
+sudo dnf install file-roller glycin-thumbnailer gnome-tweaks papers-nautilus
 ```
 
 ### Extras
 ```sh
-sudo dnf install aria2 btop code dconf-editor expect eza fastfetch firacode-nerd-fonts firamono-nerd-fonts fish fontawesome-fonts-all fzf gh git gnome-tweaks google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate tar tldr vim wget yt-dlp
+sudo dnf install aria2 btop code dconf-editor expect eza fastfetch firacode-nerd-fonts firamono-nerd-fonts fish fontawesome-fonts-all fzf gh git google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate tar tldr vim wget yt-dlp
 ```
 
 ### Tweaks
