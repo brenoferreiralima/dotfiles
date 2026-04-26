@@ -76,7 +76,10 @@ sudo dnf autoremove && sudo dnf clean all && sudo dnf upgrade -y
 
 # install packages
 echo -e "\nInstalling packages..."
-sudo dnf install -y bash-color-prompt tuned tuned-ppd NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan pipewire pipewire-pulseaudio ffmpeg gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\* libdvdcss usbutils google-noto-fonts-all liberation-fonts-all gdm gnome-control-center gnome-backgrounds ptyxis decibels gnome-calculator gnome-calendar snapshot gnome-characters gnome-clocks gnome-connections gnome-contacts baobab gnome-disk-utility simple-scan papers nautilus gnome-font-viewer loupe gnome-logs gnome-maps gnome-music gnome-system-monitor gnome-text-editor showtime gnome-weather epiphany file-roller glycin-thumbnailer papers-nautilus gnome-tweaks $VADRIVER
+sudo dnf install -y bash-color-prompt tuned tuned-ppd NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan pipewire pipewire-pulseaudio ffmpeg gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\* libdvdcss usbutils google-noto-fonts-all liberation-fonts-all gdm gnome-control-center gnome-backgrounds ptyxis decibels gnome-calculator gnome-calendar snapshot gnome-characters gnome-clocks gnome-connections gnome-contacts baobab gnome-disk-utility simple-scan papers nautilus gnome-font-viewer loupe gnome-logs gnome-maps gnome-music gnome-system-monitor gnome-text-editor showtime gnome-weather epiphany file-roller glycin-thumbnailer gnome-tweaks papers-nautilus $VADRIVER
+
+# my personal choice of packages
+# sudo dnf install aria2 btop code dconf-editor expect eza fastfetch firacode-nerd-fonts firamono-nerd-fonts fish fontawesome-fonts-all fzf gh git google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate tar tldr vim wget yt-dlp
 
 # install extra firmwares
 echo -e "\nInstalling extra firmwares..."
@@ -88,6 +91,23 @@ gsettings set org.gnome.desktop.app-folders folder-children []
 gsettings set org.gnome.shell app-picker-layout []
 gsettings set org.gnome.shell favorite-apps []
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 5
+
+# my personal choice of gnome settings
+# gsettings set org.gnome.desktop.notifications show-baner false
+# gsettings set org.gnome.desktop.notifications show-in-lock-screen false
+# gsettings set org.gnome.desktop.privacy remember-recent-files false
+# gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
+# gsettings set org.gnome.desktop.sound event-sounds false
+# gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+# gsettings set org.gnome.desktop.interface clock-format 24h
+# gsettings set org.gnome.desktop.interface clock-show-weekday true
+# gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+# gsettings set org.gnome.desktop.interface font-antialiasing rgba
+# gsettings set org.gnome.desktop.interface font-hinting full
+# gsettings set org.gnome.desktop.privacy remember-recent-files false
+# gsettings set org.gnome.settings-daemon.plugins.power power-button-action interactive
+# gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type nothing
+# gsettings set org.gnome.system.location enabled
 
 # enable graphical target
 echo -e "\nSetting graphical target as default..."
