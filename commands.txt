@@ -41,16 +41,36 @@ yt-dlp --sub-lang ptBR --write-sub --embed-subs link
 ### Gnome ###
 #############
 
-## reset gnome shell app grid
-gsettings reset org.gnome.desktop.app-folders folder-children
-gsettings reset org.gnome.shell app-picker-layout
+## gnome settings
+gsettings set org.gnome.desktop.notifications show-baner false
+gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
-## set gnome shell app grid
+gsettings set org.gnome.desktop.privacy remember-recent-files false
+
+gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
+gsettings set org.gnome.desktop.sound event-sounds false
+
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+
+gsettings set org.gnome.desktop.interface clock-format 24h
+gsettings set org.gnome.desktop.interface clock-show-weekday true
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+gsettings set org.gnome.desktop.interface font-antialiasing rgba
+gsettings set org.gnome.desktop.interface font-hinting full
+
+gsettings set org.gnome.desktop.privacy remember-recent-files false
+
 gsettings set org.gnome.desktop.app-folders folder-children []
-gsettings set org.gnome.shell app-picker-layout []
 
-## set volume step
+gsettings set org.gnome.shell app-picker-layout []
+gsettings set org.gnome.shell favorite-apps []
+
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 5
+gsettings set org.gnome.settings-daemon.plugins.power power-button-action interactive
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type nothing
+
+gsettings set org.gnome.system.location enabled
+
 
 ## set gnome shell app grid (dconf)
 dconf write /org/gnome/desktop/app-folders/folder-children "@aa{sv} []"
