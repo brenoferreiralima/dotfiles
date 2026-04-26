@@ -46,7 +46,6 @@ esac
 echo -e "\nEnabling NTSync module..."
 echo "ntsync" | sudo tee /etc/modules-load.d/ntsync.conf > /dev/null
 
-
 # set dnf.conf
 echo -e "\nConfiguring DNF..."
 echo -e "[main]\ndefaultyes=True\nfastestmirror=True\ninstall_weak_deps=False\nmax_parallel_downloads=20\n" | sudo tee /etc/dnf/dnf.conf > /dev/null
