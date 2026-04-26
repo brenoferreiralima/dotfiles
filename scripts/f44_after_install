@@ -86,6 +86,7 @@ sudo dnf --repo=rpmfusion-nonfree-tainted install -y "*-firmware"
 echo -e "\nSetting GNOME..."
 gsettings set org.gnome.desktop.app-folders folder-children []
 gsettings set org.gnome.shell app-picker-layout []
+gsettings set org.gnome.shell favorite-apps []
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 5
 
 # enable graphical target
