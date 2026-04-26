@@ -157,15 +157,18 @@ sudo dnf install aria2 btop code dconf-editor expect eza fastfetch firacode-nerd
 ```
 
 ### Tweaks
-### Reset Gnome Shell Apps Order
+### Set Gnome Shell Apps (no folder, no picker, no favorite)
 ```sh
 gsettings set org.gnome.desktop.app-folders folder-children []
 ```
 ```sh
 gsettings set org.gnome.shell app-picker-layout []
 ```
+```sh
+gsettings set org.gnome.shell favorite-apps []
+```
+
 ### Set Volume Steps to 5
 ```sh
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 5
 ```
-
