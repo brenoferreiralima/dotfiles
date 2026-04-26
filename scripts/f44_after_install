@@ -52,19 +52,19 @@ echo -e "[main]\ndefaultyes=True\nfastestmirror=True\ninstall_weak_deps=False\nm
 
 # enable fedora 3rd party repositories 
 echo -e "\nEnabling fedora 3rd party repositories..."
-sudo dnf install fedora-workstation-repositories && sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1 && sudo dnf config-manager setopt google-chrome.enabled=1
+sudo dnf install -y fedora-workstation-repositories && sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1 && sudo dnf config-manager setopt google-chrome.enabled=1
 
 # install rpmfusion repositories
 echo -e "\nInstalling RPMFusion repositories..."
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # install rpmfusion tainted repositories
 echo -e "\nInstalling RPMFusion tainted repositories..."
-sudo dnf install rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
+sudo dnf install -y rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
 
 # install terra repository
 echo -e "\nInstalling Terra repository..."
-sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+sudo dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
 # install visual studio code repository
 echo -e "\nInstalling Visual Studio Code repository..."
@@ -72,15 +72,15 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && echo -e "
 
 # clean system and upgrade
 echo -e "\nCleaning system and upgrading..."
-sudo dnf autoremove && sudo dnf clean all && sudo dnf upgrade
+sudo dnf autoremove && sudo dnf clean all && sudo dnf upgrade -y
 
 # install packages
 echo -e "\nInstalling packages..."
-sudo dnf install bash-color-prompt tuned tuned-ppd NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan pipewire pipewire-pulseaudio ffmpeg gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\* libdvdcss usbutils google-noto-fonts-all liberation-fonts-all gdm gnome-control-center gnome-backgrounds ptyxis decibels gnome-calculator gnome-calendar snapshot gnome-characters gnome-clocks gnome-connections gnome-contacts baobab gnome-disk-utility simple-scan papers nautilus gnome-font-viewer loupe gnome-logs gnome-maps gnome-music gnome-system-monitor gnome-text-editor showtime gnome-weather epiphany file-roller glycin-thumbnailer papers-nautilus gnome-tweaks $VADRIVER
+sudo dnf install -y bash-color-prompt tuned tuned-ppd NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan pipewire pipewire-pulseaudio ffmpeg gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\* libdvdcss usbutils google-noto-fonts-all liberation-fonts-all gdm gnome-control-center gnome-backgrounds ptyxis decibels gnome-calculator gnome-calendar snapshot gnome-characters gnome-clocks gnome-connections gnome-contacts baobab gnome-disk-utility simple-scan papers nautilus gnome-font-viewer loupe gnome-logs gnome-maps gnome-music gnome-system-monitor gnome-text-editor showtime gnome-weather epiphany file-roller glycin-thumbnailer papers-nautilus gnome-tweaks $VADRIVER
 
 # install extra firmwares
 echo -e "\nInstalling extra firmwares..."
-sudo dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
+sudo dnf --repo=rpmfusion-nonfree-tainted install -y "*-firmware"
 
 # set gnome settings
 echo -e "\nSetting GNOME..."
