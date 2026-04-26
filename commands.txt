@@ -42,7 +42,7 @@ yt-dlp --sub-lang ptBR --write-sub --embed-subs link
 #############
 
 ## gnome settings
-gsettings set org.gnome.desktop.notifications show-baner false
+gsettings set org.gnome.desktop.notifications show-banner false
 gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 
 gsettings set org.gnome.desktop.privacy remember-recent-files false
