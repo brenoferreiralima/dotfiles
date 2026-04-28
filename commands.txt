@@ -178,3 +178,10 @@ fwupdmgr get-updates
 ## install updates
 fwupdmgr update
 
+
+##############
+### GitHub ###
+##############
+
+## github cli login
+gh auth login
