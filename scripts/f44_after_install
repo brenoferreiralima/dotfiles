@@ -43,8 +43,8 @@ case $GD in
 esac
 
 # enable ntsync
-echo -e "\nEnabling NTSync module..."
-echo "ntsync" | sudo tee /etc/modules-load.d/ntsync.conf > /dev/null
+# echo -e "\nEnabling NTSync module..."
+# echo "ntsync" | sudo tee /etc/modules-load.d/ntsync.conf > /dev/null
 
 # set dnf.conf
 echo -e "\nConfiguring DNF..."
@@ -63,8 +63,8 @@ echo -e "\nInstalling RPMFusion tainted repositories..."
 sudo dnf install -y rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
 
 # install terra repository
-echo -e "\nInstalling Terra repository..."
-sudo dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+# echo -e "\nInstalling Terra repository..."
+# sudo dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
 # install visual studio code repository
 echo -e "\nInstalling Visual Studio Code repository..."
@@ -79,7 +79,9 @@ echo -e "\nInstalling packages..."
 sudo dnf install -y bash-color-prompt tuned tuned-ppd NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan pipewire pipewire-pulseaudio ffmpeg gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\* libdvdcss usbutils google-noto-fonts-all liberation-fonts-all gdm gnome-control-center gnome-backgrounds ptyxis decibels gnome-calculator gnome-calendar snapshot gnome-characters gnome-clocks gnome-connections gnome-contacts baobab gnome-disk-utility simple-scan papers nautilus gnome-font-viewer loupe gnome-logs gnome-maps gnome-music gnome-system-monitor gnome-text-editor showtime gnome-weather epiphany file-roller glycin-thumbnailer gnome-tweaks papers-nautilus $VADRIVER
 
 # my personal choice of packages
-# sudo dnf install -y aria2 btop code dconf-editor expect eza fastfetch firacode-nerd-fonts firamono-nerd-fonts fish fontawesome-fonts-all fzf gh git google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate tar tldr vim wget yt-dlp
+# sudo dnf install -y aria2 bat btop code dconf-editor discord duf expect eza fastfetch fish fontawesome-fonts-all fzf gh git-core google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate tar tldr vim wget yt-dlp
+# needs terra repository
+# sudo dnf install -y firacode-nerd-fonts firamono-nerd-fonts 
 
 # install extra firmwares
 echo -e "\nInstalling extra firmwares..."
