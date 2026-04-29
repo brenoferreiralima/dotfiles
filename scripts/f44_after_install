@@ -50,7 +50,7 @@ esac
 echo -e "\nConfiguring DNF..."
 echo -e "[main]\ndefaultyes=True\nfastestmirror=True\ninstall_weak_deps=False\nmax_parallel_downloads=20\n" | sudo tee /etc/dnf/dnf.conf > /dev/null
 
-# enable fedora 3rd party repositories 
+# enable fedora 3rd party repositories
 echo -e "\nEnabling fedora 3rd party repositories..."
 sudo dnf install -y fedora-workstation-repositories && sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1 && sudo dnf config-manager setopt google-chrome.enabled=1
 
@@ -79,9 +79,9 @@ echo -e "\nInstalling packages..."
 sudo dnf install -y bash-color-prompt pciutils usbutils ntsync-autoload tuned tuned-ppd NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan pipewire pipewire-pulseaudio ffmpeg gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\* libdvdcss google-noto-fonts-all liberation-fonts-all gdm gnome-control-center gnome-backgrounds ptyxis decibels gnome-calculator gnome-calendar snapshot gnome-characters gnome-clocks gnome-connections gnome-contacts baobab gnome-disk-utility simple-scan papers nautilus gnome-font-viewer loupe gnome-logs gnome-maps gnome-music gnome-system-monitor gnome-text-editor showtime gnome-weather epiphany file-roller gnome-tweaks papers-nautilus glycin-thumbnailer gdk-pixbuf2-modules-extra gvfs-\* $VADRIVER
 
 # my personal choice of packages
-# sudo dnf install -y aria2 bat btop code dconf-editor discord duf expect eza fastfetch fish fontawesome-fonts-all fzf gh git-core google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate tar tldr vim wget yt-dlp
+# sudo dnf install -y aria2 bat btop code dconf-editor discord duf expect eza fastfetch fish fontawesome-fonts-all fzf gh git-core google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate rsync tar tldr vim wget yt-dlp
 # needs terra repository
-# sudo dnf install -y firacode-nerd-fonts firamono-nerd-fonts 
+# sudo dnf install -y firacode-nerd-fonts firamono-nerd-fonts
 
 # install extra firmwares
 echo -e "\nInstalling extra firmwares..."
