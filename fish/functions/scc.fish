@@ -1,4 +1,3 @@
-# clean the system caches with yay, pacman and flatpak
-function scc --wraps='yes | yay -Scc && flatpak uninstall --unused' --description 'alias scc=yes | yay -Scc && flatpak uninstall --unused'
-    yes | yay -Scc && flatpak uninstall --unused $argv     
+function scc --wraps='sudo dnf autoremove && sudo dnf clean all && flatpak uninstall --unused' --description 'alias scc=sudo dnf autoremove && sudo dnf clean all && flatpak uninstall --unused'
+    sudo dnf autoremove && sudo dnf clean all && flatpak uninstall --unused $argv
 end
