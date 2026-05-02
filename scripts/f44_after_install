@@ -79,7 +79,7 @@ echo -e "\nInstalling packages..."
 sudo dnf install -y bash-color-prompt pciutils usbutils ntsync-autoload tuned tuned-ppd NetworkManager NetworkManager-bluetooth NetworkManager-wifi NetworkManager-wwan pipewire pipewire-pulseaudio ffmpeg gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly-free gstreamer1-plugins-ugly gst-thumbnailers gstreamer1-plugin-\* libdvdcss google-noto-fonts-all liberation-fonts-all gdm gnome-control-center gnome-backgrounds ptyxis decibels gnome-calculator gnome-calendar snapshot gnome-characters gnome-clocks gnome-connections gnome-contacts baobab gnome-disk-utility simple-scan papers nautilus gnome-font-viewer loupe gnome-logs gnome-maps gnome-music gnome-system-monitor gnome-text-editor showtime gnome-weather epiphany file-roller gnome-tweaks papers-nautilus glycin-thumbnailer gdk-pixbuf2-modules-extra gvfs-\* $VADRIVER
 
 # my personal choice of packages
-# sudo dnf install -y aria2 bat btop code dconf-editor discord duf expect eza fastfetch fish fontawesome-fonts-all fzf gh git-core google-chrome-stable google-noto-\* liberation-narrow-fonts pipewire-gstreamer pipewire-utils pulseaudio-utils plocate rsync tar tldr vim wget yt-dlp
+# sudo dnf install -y aria2 bat btop code dconf-editor discord duf expect eza fastfetch fish fontawesome-fonts-all fzf gh git-core google-chrome-stable google-noto-\* liberation-narrow-fonts obs-studio obs-studio-plugin-vkcapture pipewire-gstreamer pipewire-utils pulseaudio-utils plocate rsync tar tldr vim wget yt-dlp
 # needs terra repository
 # sudo dnf install -y firacode-nerd-fonts firamono-nerd-fonts
 
@@ -90,10 +90,11 @@ sudo dnf --repo=rpmfusion-nonfree-tainted install -y "*-firmware"
 
 # set gnome settings
 echo -e "\nSetting GNOME..."
+gsettings set org.gnome.shell favorite-apps []
 gsettings set org.gnome.desktop.app-folders folder-children []
 gsettings set org.gnome.shell app-picker-layout []
-gsettings set org.gnome.shell favorite-apps []
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 5
+gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
 
 # my personal choice of gnome settings
 # gsettings set org.gnome.desktop.notifications show-banners false
@@ -107,10 +108,19 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 5
 # gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 # gsettings set org.gnome.desktop.interface font-antialiasing rgba
 # gsettings set org.gnome.desktop.interface font-hinting full
+# gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
 # gsettings set org.gnome.desktop.privacy remember-recent-files false
+# gsettings set org.gnome.desktop.session idle-delay 0
+# gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
 # gsettings set org.gnome.settings-daemon.plugins.power power-button-action interactive
+# gsettings set org.gnome.settings-daemon.plugins.power power-saver-profile-on-low-battery false
 # gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type nothing
+# gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type nothing
 # gsettings set org.gnome.system.location enabled true
+
+# gsettings set org.gnome.Ptyxis audible-bell false
+# gsettings set org.gnome.Ptyxis restore-session false
+# gsettings set org.gnome.Ptyxis restore-window-size false
 
 # enable graphical target
 echo -e "\nSetting graphical target as default..."
