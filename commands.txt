@@ -27,8 +27,8 @@ sudo reflector --verbose --latest 10 --country Brazil --protocol https --sort ra
 ### yt-dlp ###
 ##############
 
-## download video formating filename to "title.ext" 
-yt-dlp -o "%(title)s.%(ext)s" link 
+## download video formating filename to "title.ext"
+yt-dlp -o "%(title)s.%(ext)s" link
 
 ## yt-dlp convert to "X" (aac, mp3, mp4, mkv)
 yt-dlp -t X link
@@ -71,6 +71,8 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type not
 
 gsettings set org.gnome.system.location enabled true
 
+## xdg default terminal
+xdg-mime default org.gnome.Ptyxis.desktop x-scheme-handler/terminal
 
 ## set gnome shell app grid (dconf)
 dconf write /org/gnome/desktop/app-folders/folder-children "@aa{sv} []"
