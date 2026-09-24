@@ -1,3 +1,3 @@
-function l1 --wraps='eza --icons --oneline' --description 'alias l1=eza --icons --oneline'
-    eza --icons --oneline $argv
+function l1 --wraps='eza --icons --oneline --group-directories-first' --description 'alias l1=eza --icons --oneline --group-directories-first'
+    eza --icons --oneline --group-directories-first $argv
 end

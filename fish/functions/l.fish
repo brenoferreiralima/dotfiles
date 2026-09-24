@@ -1,4 +1,4 @@
 # list things with eza
-function l --wraps='eza --icons' --description 'alias l=eza --icons'
-    eza --icons $argv     
+function l --wraps='eza --icons --group-directories-first' --description 'alias l=eza --icons --group-directories-first'
+    eza --icons --group-directories-first $argv     
 end
